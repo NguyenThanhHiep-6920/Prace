@@ -1,0 +1,24 @@
+query UserById($id: UUID!) {
+  result: userById(id: $id) {
+    ...User
+  }
+}
+
+fragment User on UserGQLModel {
+  __typename
+  id
+  lastchange
+  name
+  surname
+  fullname
+  email
+  created
+  createdby {
+    id
+    email
+  }
+  changedby {
+    id
+    name
+  }
+}

@@ -1,0 +1,126 @@
+groups:
+- name: SLO.rules
+  rules:
+
+  # Availability
+  - alert: ServiceAvailabilityWarning
+    expr: avg_over_time(service_availability_percent[1h]) < 97
+    for: 10m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Availability below 97% (warning)"
+      description: "1-hour average availability is {{ $value }}%"
+
+  - alert: ServiceAvailabilityViolation
+    expr: avg_over_time(service_availability_percent[7d]) < 95
+    for: 0m
+    labels:
+      severity: critical
+    annotations:
+      summary: "SLO Violation: Service availability < 95%"
+      description: "7-day average availability is {{ $value }}%"
+
+  # Blackbox
+  - alert: BlackboxAvailabilityWarning
+    expr: avg_over_time(probe_success[30m]) < 0.99
+    for: 10m
+    labels:
+      severity: warning
+    annotations:
+      summary: "External probe success below 99% (warning)"
+      description: "30-minute success rate is {{ $value }}"
+
+  - alert: BlackboxAvailabilityViolation
+    expr: avg_over_time(probe_success[3d]) < 0.98
+    for: 0m
+    labels:
+      severity: critical
+    annotations:
+      summary: "SLO Violation: External availability < 98%"
+      description: "3-day average success rate is {{ $value }}"
+
+  # Average Response Time
+  - alert: AvgResponseTimeWarning
+    expr: avg_over_time(service_average_response_time_seconds[15m]) > 0.8
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High average response time (warning)"
+      description: "15-minute average response time is {{ $value }}s"
+
+  - alert: AvgResponseTimeViolation
+    expr: avg_over_time(service_average_response_time_seconds[1h]) > 1
+    for: 15m
+    labels:
+      severity: critical
+    annotations:
+      summary: "SLO Violation: Avg response time > 1s"
+      description: "1-hour average is {{ $value }}s"
+
+  # p95, p99 latency
+  - alert: P95LatencyWarning
+    expr: avg_over_time(service_p95_response_time_seconds[15m]) > 1.5
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "p95 latency elevated (warning)"
+      description: "15-minute p95 latency is {{ $value }}s"
+
+  - alert: P95LatencyViolation
+    expr: avg_over_time(service_p95_response_time_seconds[30m]) > 2
+    for: 10m
+    labels:
+      severity: critical
+    annotations:
+      summary: "SLO Violation: p95 latency > 2s"
+      description: "30-minute p95 latency is {{ $value }}s"
+
+  - alert: P99LatencyViolation
+    expr: avg_over_time(service_p99_response_time_seconds[30m]) > 5
+    for: 10m
+    labels:
+      severity: critical
+    annotations:
+      summary: "SLO Violation: p99 latency > 5s"
+      description: "30-minute p99 latency is {{ $value }}s"
+
+  # Error Rate
+  - alert: ErrorRateWarning
+    expr: avg_over_time(service_error_rate[1h]) > 0.01
+    for: 10m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Error rate above 1% (warning)"
+      description: "1-hour average error rate is {{ $value }}"
+
+  - alert: ErrorRateViolation
+    expr: avg_over_time(service_error_rate[7d]) > 0.02
+    for: 0m
+    labels:
+      severity: critical
+    annotations:
+      summary: "SLO Violation: Error rate > 2%"
+      description: "7-day average error rate is {{ $value }}"
+
+  # Request Rate
+  - alert: RequestRateWarning
+    expr: avg_over_time(service_request_rate[5m]) > 18
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High request rate approaching limit"
+      description: "Request rate is averaging {{ $value }} req/s"
+
+  - alert: RequestRateViolation
+    expr: avg_over_time(service_request_rate[5m]) > 20
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "SLO Violation: Request rate > 20 req/s"
+      description: "Service is under abnormally high load"

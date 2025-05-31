@@ -1,0 +1,159 @@
+{
+  "id": null,
+  "title": "Cloud Service QoS & Availability (Per Service)",
+  "schemaVersion": 37,
+  "version": 1,
+  "refresh": "10s",
+  "templating": {
+    "list": [
+      {
+        "name": "service",
+        "type": "query",
+        "label": "service",
+        "datasource": "prometheus",
+        "query": "label_values(service_availability_percent, service)",
+        "refresh": 1,
+        "includeAll": false,
+        "multi": false,
+        "sort": 1
+      }
+    ]
+  },
+  "panels": [
+    {
+      "type": "gauge",
+      "title": "Service Availability (%)",
+      "description": "Current percentage of time the service is available.",
+      "targets": [
+        {
+          "expr": "service_availability_percent{service=~\"$service\"}",
+          "legendFormat": "Availability",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "orange", "value": 95 },
+              { "color": "green", "value": 99 }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 5 },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Average Response Time (s)",
+      "description": "Shows how long requests take on average.",
+      "targets": [
+        {
+          "expr": "service_average_response_time_seconds{service=~\"$service\"}",
+          "legendFormat": "Avg Resp Time",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        }
+      },
+      "options": {
+        "legend": { "showLegend": true, "displayMode": "table", "placement": "bottom" },
+        "fillOpacity": 20,
+        "lineWidth": 2,
+        "interpolation": "smooth"
+      },
+      "gridPos": { "x": 0, "y": 5, "w": 12, "h": 6 },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Latency Percentiles (P95 & P99)",
+      "description": "High-percentile latency to reflect tail performance.",
+      "targets": [
+        {
+          "expr": "service_p95_response_time_seconds{service=~\"$service\"}",
+          "legendFormat": "P95",
+          "refId": "C"
+        },
+        {
+          "expr": "service_p99_response_time_seconds{service=~\"$service\"}",
+          "legendFormat": "P99",
+          "refId": "D"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        }
+      },
+      "options": {
+        "legend": { "showLegend": true, "displayMode": "table", "placement": "bottom" },
+        "fillOpacity": 15,
+        "lineWidth": 2,
+        "interpolation": "smooth"
+      },
+      "gridPos": { "x": 0, "y": 11, "w": 12, "h": 6 },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Error Rate (%)",
+      "description": "Shows service error rate over time.",
+      "targets": [
+        {
+          "expr": "service_error_rate{service=~\"$service\"}",
+          "legendFormat": "Error Rate",
+          "refId": "E"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        }
+      },
+      "options": {
+        "legend": { "showLegend": true, "displayMode": "table", "placement": "bottom" },
+        "fillOpacity": 10,
+        "lineWidth": 2,
+        "interpolation": "smooth"
+      },
+      "gridPos": { "x": 0, "y": 17, "w": 12, "h": 6 },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Request Rate (req/s)",
+      "description": "Requests per second over time.",
+      "targets": [
+        {
+          "expr": "service_request_rate{service=~\"$service\"}",
+          "legendFormat": "Request Rate",
+          "refId": "F"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps"
+        }
+      },
+      "options": {
+        "legend": { "showLegend": true, "displayMode": "table", "placement": "bottom" },
+        "fillOpacity": 15,
+        "lineWidth": 2,
+        "interpolation": "smooth"
+      },
+      "gridPos": { "x": 0, "y": 23, "w": 12, "h": 6 },
+      "datasource": "prometheus"
+    }
+  ]
+}

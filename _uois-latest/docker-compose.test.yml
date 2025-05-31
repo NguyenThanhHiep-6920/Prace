@@ -1,0 +1,330 @@
+version: "3.9"
+
+services:
+  apollo:
+    image: hrbolek/apollo_federation
+    # image: apollofederation:latest
+    environment:
+      # promenne, ktere lze cist v kontejneru
+      - PORT=3000
+      - |
+        SERVICES=
+        [
+          {"name": "forms", "url": "http://gql_forms:8000/gql"},
+        ]       
+    healthcheck:
+      # definice, umoznujici provest test, zda je kontejner v poradku (vsimnete si portu a srovnejte s portem v environment)
+      interval: 60s
+      retries: 3
+      start_period: 60s
+      timeout: 10s
+    restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
+    # ports: #v deploymentu by nebylo zadne mapovani portu
+      # vnejsi port : port, kde sluzbu poskytuje kontejner
+      # - 33000:3000
+    depends_on:
+      #- gql_ug
+      - gql_forms
+      #- gql_events
+      #- gql_facilities
+      #- gql_externalids
+      #- gql_granting
+      # - gql_lessons
+      # - gql_projects
+      # - gql_presences
+      # - gql_publications
+      # - gql_workflows
+      # - gql_documents
+
+  # gql_ug:
+  #   image: hrbolek/gql_ug #   image: kavic/ug
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=example
+  #     - POSTGRES_HOST=host.docker.internal:5432
+  #     - POSTGRES_DB=data
+  #     - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+  #     - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+  #     - DEMO=True
+  #   healthcheck:
+  #     # definice, umoznujici provest test, zda je kontejner v poradku
+  #     test: "curl -f -H 'Content-Type: application/json' -X POST -d '{\"query\":\"query{__schema{types{name}}}\"}' http://localhost:8000/gql || exit 1"
+  #     interval: 60s
+  #     retries: 3
+  #     start_period: 60s
+  #     timeout: 10s
+  #   restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
+  #   ports:
+  #     - 33012:8000
+
+  # gql_events:
+  #   # image: nafreju2/gql_events # where u user.events
+  #   image: hrbolek/gql_events # where u user.events
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=example
+  #     - POSTGRES_HOST=host.docker.internal:5432
+  #     - POSTGRES_DB=data
+  #     - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+  #     - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+  #     - DEMO=True
+  #   ports:
+  #     - 33331:8000
+
+  # gql_externalids:
+  #   image: gjia/gql_externalids:main
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=example
+  #     - POSTGRES_HOST=host.docker.internal:5432
+  #     - POSTGRES_DB=data
+  #     - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+  #     - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+  #     - DEMO=True
+  #   ports:
+  #     - 33332:8000
+
+  # gql_facilities:
+  #   image: hrbolek/gql_facilities 
+  #   #image: vitekr/gql_facilities
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=example
+  #     - POSTGRES_HOST=host.docker.internal:5432
+  #     - POSTGRES_DB=data
+  #     - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+  #     - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+  #     - DEMO=True
+  #   ports:
+  #     - 33334:8000
+
+  # gql_granting:
+  #   image: oklement/gql_granting
+  #   # image: hieuductran231/gql_granting:main
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=example
+  #     - POSTGRES_HOST=host.docker.internal:5432
+  #     - POSTGRES_DB=data
+  #     - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+  #     - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+  #     - DEMO=True
+  #   ports:
+  #     - 33335:8000
+
+  # gql_lessons:
+  #   image: luknowo/gql_lessons
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=example
+  #     - POSTGRES_HOST=host.docker.internal:5432
+  #     - POSTGRES_DB=data
+  #     - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+  #     - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+  #     - DEMO=True
+  #   ports:
+  #     - 33336:8000
+      
+  # gql_preferences:
+  #   image: haki22/gql-preferences
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=example
+  #     - POSTGRES_HOST=host.docker.internal:5432
+  #     - POSTGRES_DB=data
+  #     - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+  #     - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+  #     - DEMO=True
+
+  # gql_projects: 
+  #   image: hrbolek/gql_projects
+  #   # image: johnysmidy/gql_projects
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=example
+  #     - POSTGRES_HOST=host.docker.internal:5432
+  #     - POSTGRES_DB=data
+  #     - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+  #     - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+  #     - DEMO=True
+  #   ports:
+  #     - 33337:8000
+
+
+  # gql_documents:
+  #   image: tadblack/gql_documents
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=example
+  #     - POSTGRES_HOST=host.docker.internal:5432
+  #     - POSTGRES_DB=data
+  #     - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+  #     - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+  #     - DEMO=True
+  #   ports:
+  #     - 33330:8000      
+
+  # gql_surveys:
+  #   image: komandosscz/surveys
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=example
+  #     - POSTGRES_HOST=host.docker.internal:5432
+  #     - POSTGRES_DB=data
+  #     - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+  #     - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+  #     - DEMO=True
+  #   # ports:
+  #   #   - 33330:8000      
+
+  # gql_presences:
+  #   image: davidnemecek4227/gql_presences:0.8.1
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=example
+  #     - POSTGRES_HOST=host.docker.internal:5432
+  #     - POSTGRES_DB=data
+  #     - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+  #     - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+  #     - DEMO=True
+  #   ports:
+  #     - 33339:8000    
+
+  # gql_workflows:
+  #   image: taido028/gql_workflow
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=example
+  #     - POSTGRES_HOST=host.docker.internal:5432
+  #     - POSTGRES_DB=data
+  #     - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+  #     - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+  #     - DEMO=True
+  #   ports:
+  #     - 33340:8000
+
+
+  # gql_publications:
+  #   image: kozmycz/gql_publications_a #porad ID :(
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=example
+  #     - POSTGRES_HOST=host.docker.internal:5432
+  #     - POSTGRES_DB=data
+  #     - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+  #     - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+  #     - DEMO=True
+  #   ports:
+  #     - 33338:8000      
+
+
+  gql_forms:
+    image: hrbolek/gql_forms
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_HOST=host.docker.internal:5432
+      - POSTGRES_DB=data
+      - GQLUG_ENDPOINT_URL=http://gql_ug:8000/gql
+      - JWTPUBLICKEYURL=http://frontend:8000/oauth/publickey
+      - JWTRESOLVEUSERPATHURL=http://frontend:8000/oauth/userinfo
+      - DEMO=True
+    healthcheck:
+      # definice, umoznujici provest test, zda je kontejner v poradku
+      test: "curl -f -H 'Content-Type: application/json' -X POST -d '{\"query\":\"query{__schema{types{name}}}\"}' http://localhost:8000/gql || exit 1"
+      interval: 60s
+      retries: 3
+      start_period: 60s
+      timeout: 10s
+    restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
+    ports:
+      - 33013:8000
+
+  frontend:
+    image: hrbolek/frontend
+    environment:
+      - DEMO=False
+      - GQL_PROXY=http://apollo:3000/api/gql/
+      - SALT=fe1c71b2-74c0-41e5-978f-eecbffac7418
+    ports:
+      - 33001:8000
+    volumes:
+    # for development
+      - ./server/htmls:/app/server/htmls
+      - ./server/config.json:/app/server/config.json
+
+  prometheus:
+    image: prom/prometheus
+    #restart: always
+    volumes:
+      - ./prometheus:/etc/prometheus/
+      # - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - 9090:9090
+    # links:
+    #   - cadvisor:cadvisor
+    #   - alertmanager:alertmanager
+    # depends_on:
+    #   - cadvisor
+
+  grafana:
+    image: grafana/grafana
+    user: '472'
+    #restart: always
+    environment:
+      GF_INSTALL_PLUGINS: 'grafana-clock-panel,grafana-simple-json-datasource'
+    # volumes:
+    #   - grafana_data:/var/lib/grafana
+    #   - ./grafana/provisioning/:/etc/grafana/provisioning/
+    # env_file:
+    #   - ./grafana/config.monitoring
+    ports:
+      - 8300:3000
+    depends_on:
+      - prometheus
+
+  # node-exporter:
+  #   image: prom/node-exporter
+  #   volumes:
+  #     - /proc:/host/proc:ro
+  #     - /sys:/host/sys:ro
+  #     - /:/rootfs:ro
+  #   command:
+  #     - '--path.procfs=/host/proc'
+  #     - '--path.sysfs=/host/sys'
+  #     - --collector.filesystem.ignored-mount-points
+  #     - '^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)'
+  #   ports:
+  #     - 9100:9100
+  #   restart: always
+  #   deploy:
+  #     mode: global
+
+  # alertmanager:
+  #   image: prom/alertmanager
+  #   restart: always
+  #   ports:
+  #     - 9093:9093
+  #   # volumes:
+  #   #   - ./alertmanager/:/etc/alertmanager/
+  #   command:
+  #     - '--config.file=/etc/alertmanager/config.yml'
+  #     - '--storage.path=/alertmanager'
+
+  # cadvisor:
+  #   image: gcr.io/cadvisor/cadvisor
+  #   # volumes:
+  #   #   - /:/rootfs:ro
+  #   #   - /var/run:/var/run:rw
+  #   #   - /sys:/sys:ro
+  #   #   - /var/lib/docker/:/var/lib/docker:ro
+  #   ports:
+  #     - 8080:8080
+  #   restart: always
+  #   deploy:
+  #     mode: global

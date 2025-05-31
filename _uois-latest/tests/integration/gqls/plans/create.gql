@@ -1,0 +1,41 @@
+mutation Insert($id: UUID, $name: String, $semester_id: UUID!, $masterevent_id: UUID!) {
+  result: planInsert(plan: {id: $id, name: $name, semesterId: $semester_id, mastereventId: $masterevent_id }) {
+    id
+    msg
+    result: plan {
+      ...Plan
+    }
+  }
+}
+
+
+fragment Plan on PlanGQLModel {
+  __typename
+    id
+    lastchange
+    name
+    lessons {
+      name
+      id
+      order
+      type {
+        id
+      }
+      length
+      users {
+        id
+      }
+      groups {
+        id
+      }
+      facilities {
+        id
+      }
+    }
+    semester {
+      id
+      plans {
+        id
+      }
+    }
+}

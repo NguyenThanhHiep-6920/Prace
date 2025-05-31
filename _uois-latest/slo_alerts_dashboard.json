@@ -1,0 +1,116 @@
+{
+  "id": null,
+  "title": "SLO Alerts Overview",
+  "tags": [
+    "alerting",
+    "slo",
+    "prometheus"
+  ],
+  "timezone": "browser",
+  "schemaVersion": 37,
+  "version": 1,
+  "refresh": "10s",
+  "panels": [
+    {
+      "type": "alertlist",
+      "title": "Active Alerts",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "targets": [],
+      "options": {
+        "show": {
+          "labels": true,
+          "annotations": true
+        },
+        "sortOrder": 1,
+        "filter": {
+          "state": [
+            "alerting",
+            "pending"
+          ]
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Service Latency with Alert Annotations",
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 24,
+        "h": 10
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "targets": [
+        {
+          "expr": "service_average_response_time_seconds",
+          "refId": "A",
+          "legendFormat": "Avg Response Time"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 0.8
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        }
+      },
+      "options": {
+        "annotations": {
+          "show": true
+        }
+      }
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "name": "Prometheus Alerts",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "enable": true,
+        "expr": "ALERTS{alertstate=\"firing\"}",
+        "iconColor": "rgba(255, 96, 96, 1)",
+        "label": "Alert",
+        "textFormat": "Alert: $labels.alertname"
+      }
+    ]
+  },
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "editable": true
+}

@@ -1,0 +1,175 @@
+{
+  "id": null,
+  "title": "Node & Container Resource Metrics",
+  "tags": ["node_exporter", "cadvisor"],
+  "schemaVersion": 37,
+  "version": 1,
+  "refresh": "10s",
+  "templating": {
+    "list": [
+      {
+        "name": "instance",
+        "type": "query",
+        "datasource": "prometheus",
+        "label": "Instance",
+        "query": "label_values(node_cpu_seconds_total, instance)",
+        "refresh": 1,
+        "multi": false,
+        "includeAll": false
+      },
+      {
+        "name": "container",
+        "type": "query",
+        "datasource": "prometheus",
+        "label": "Container",
+        "query": "label_values(container_cpu_usage_seconds_total, name)",
+        "refresh": 1,
+        "multi": false,
+        "includeAll": false
+      }
+    ]
+  },
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Host CPU Usage (%)",
+      "targets": [
+        {
+          "expr": "100 - (avg by(instance) (rate(node_cpu_seconds_total{mode=\"idle\", instance=~\"$instance\"}[1m])) * 100)",
+          "legendFormat": "CPU Usage",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        }
+      },
+      "gridPos": { "x": 0, "y": 0, "w": 6, "h": 6 },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Host Memory Usage (%)",
+      "targets": [
+        {
+          "expr": "100 * (1 - (node_memory_MemAvailable_bytes{instance=~\"$instance\"} / node_memory_MemTotal_bytes{instance=~\"$instance\"}))",
+          "legendFormat": "Memory Usage",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        }
+      },
+      "gridPos": { "x": 6, "y": 0, "w": 6, "h": 6 },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Host Disk IO (MB/s)",
+      "targets": [
+        {
+          "expr": "rate(node_disk_read_bytes_total{instance=~\"$instance\"}[1m]) / 1024 / 1024",
+          "legendFormat": "Read",
+          "refId": "C"
+        },
+        {
+          "expr": "rate(node_disk_written_bytes_total{instance=~\"$instance\"}[1m]) / 1024 / 1024",
+          "legendFormat": "Write",
+          "refId": "D"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "MBps"
+        }
+      },
+      "gridPos": { "x": 0, "y": 6, "w": 6, "h": 6 },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Host Network Traffic (MB/s)",
+      "targets": [
+        {
+          "expr": "rate(node_network_receive_bytes_total{device!=\"lo\", instance=~\"$instance\"}[1m]) / 1024 / 1024",
+          "legendFormat": "Receive",
+          "refId": "E"
+        },
+        {
+          "expr": "rate(node_network_transmit_bytes_total{device!=\"lo\", instance=~\"$instance\"}[1m]) / 1024 / 1024",
+          "legendFormat": "Transmit",
+          "refId": "F"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "MBps"
+        }
+      },
+      "gridPos": { "x": 6, "y": 6, "w": 6, "h": 6 },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Container CPU Usage (%)",
+      "targets": [
+        {
+          "expr": "rate(container_cpu_usage_seconds_total{name=~\"$container\"}[1m]) * 100",
+          "legendFormat": "{{name}}",
+          "refId": "G"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        }
+      },
+      "gridPos": { "x": 0, "y": 12, "w": 6, "h": 6 },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Container Memory Usage (MB)",
+      "targets": [
+        {
+          "expr": "container_memory_usage_bytes{name=~\"$container\"} / 1024 / 1024",
+          "legendFormat": "{{name}}",
+          "refId": "H"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "MB"
+        }
+      },
+      "gridPos": { "x": 6, "y": 12, "w": 6, "h": 6 },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Container Network I/O (MB/s)",
+      "targets": [
+        {
+          "expr": "rate(container_network_receive_bytes_total{name=~\"$container\"}[1m]) / 1024 / 1024",
+          "legendFormat": "Receive",
+          "refId": "I"
+        },
+        {
+          "expr": "rate(container_network_transmit_bytes_total{name=~\"$container\"}[1m]) / 1024 / 1024",
+          "legendFormat": "Transmit",
+          "refId": "J"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "MBps"
+        }
+      },
+      "gridPos": { "x": 0, "y": 18, "w": 12, "h": 6 },
+      "datasource": "prometheus"
+    }
+  ]
+}

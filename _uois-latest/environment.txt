@@ -1,0 +1,4 @@
+DEMO=False
+GQL_PROXY=http://localhost:33001/
+SALT=fe1c71b2-74c0-41e5-978f-eecbffac7418
+POSTGRES_HOST=localhost:5433

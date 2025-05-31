@@ -1,0 +1,149 @@
+{
+  "id": null,
+  "title": "SLI Metrics Dashboard",
+  "timezone": "browser",
+  "schemaVersion": 30,
+  "version": 1,
+  "refresh": "10s",
+  "panels": [
+    {
+      "title": "Query Rate (req/s)",
+      "type": "gauge",
+      "targets": [
+        {
+          "expr": "rate(graphql_query_total[1m])",
+          "interval": "",
+          "legendFormat": "Query Rate",
+          "refId": "A"
+        }
+      ],
+      "id": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "datasource": "prometheus"
+    },
+    {
+      "title": "Error Rate (%)",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "rate(graphql_errors_total[5m]) / rate(graphql_query_total[5m])",
+          "refId": "A"
+        }
+      ],
+      "id": 2,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "datasource": "prometheus"
+    },
+    {
+      "title": "Availability (%)",
+      "type": "gauge",
+      "targets": [
+        {
+          "expr": "1 - (rate(graphql_errors_total[5m]) / rate(graphql_query_total[5m]))",
+          "refId": "A"
+        }
+      ],
+      "id": 3,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "datasource": "Prometheus"
+    },
+    {
+      "title": "Avg Response Time (s)",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "avg(rate(graphql_query_duration_seconds_sum[5m])) / avg(rate(graphql_query_duration_seconds_count[5m]))",
+          "legendFormat": "Avg Latency",
+          "refId": "A"
+        }
+      ],
+      "id": 4,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "datasource": "prometheus"
+    },
+    {
+      "title": "P95 Response Time (s)",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, rate(graphql_query_duration_seconds_bucket[5m]))",
+          "legendFormat": "P95 Latency",
+          "refId": "A"
+        }
+      ],
+      "id": 5,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "datasource": "prometheus"
+    },
+    {
+      "title": "P99 Response Time (s)",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, rate(graphql_query_duration_seconds_bucket[5m]))",
+          "legendFormat": "P99 Latency",
+          "refId": "A"
+        }
+      ],
+      "id": 6,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "datasource": "prometheus"
+    }
+  ],
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "tags": [
+    "SLI",
+    "Monitoring"
+  ],
+  "editable": true
+}

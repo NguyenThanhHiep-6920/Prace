@@ -1,0 +1,780 @@
+============================= test session starts =============================
+platform win32 -- Python 3.10.10, pytest-7.4.3, pluggy-1.3.0
+rootdir: C:\_develop\_uois_2023\gql_forms
+plugins: anyio-3.7.1, asyncio-0.23.2, cov-4.1.0
+asyncio: mode=strict
+
+----------------------------- live log collection -----------------------------
+INFO     root:resolvers.py:70 Using GQL type for <class 'str'> (<class 'uoishelpers.resolvers.StrFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'str'> (<class 'uoishelpers.resolvers.StrFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'uuid.UUID'> (<class 'uoishelpers.resolvers.UuidFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'str'> (<class 'uoishelpers.resolvers.StrFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'str'> (<class 'uoishelpers.resolvers.StrFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'bool'> (<class 'uoishelpers.resolvers.BoolFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'uuid.UUID'> (<class 'uoishelpers.resolvers.UuidFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'uuid.UUID'> (<class 'uoishelpers.resolvers.UuidFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'uoishelpers.resolvers.FormTypeWhereFilter'> (<class 'uoishelpers.resolvers.FormTypeWhereFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'str'> (<class 'uoishelpers.resolvers.StrFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'str'> (<class 'uoishelpers.resolvers.StrFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'str'> (<class 'uoishelpers.resolvers.StrFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'str'> (<class 'uoishelpers.resolvers.StrFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'uuid.UUID'> (<class 'uoishelpers.resolvers.UuidFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'str'> (<class 'uoishelpers.resolvers.StrFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'str'> (<class 'uoishelpers.resolvers.StrFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'uuid.UUID'> (<class 'uoishelpers.resolvers.UuidFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'str'> (<class 'uoishelpers.resolvers.StrFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'str'> (<class 'uoishelpers.resolvers.StrFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'str'> (<class 'uoishelpers.resolvers.StrFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'bool'> (<class 'uoishelpers.resolvers.BoolFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'uuid.UUID'> (<class 'uoishelpers.resolvers.UuidFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'uuid.UUID'> (<class 'uoishelpers.resolvers.UuidFilter'>)
+INFO     root:resolvers.py:70 Using GQL type for <class 'uoishelpers.resolvers.FormWhereFilter'> (<class 'uoishelpers.resolvers.FormWhereFilter'>)
+collected 50 items
+
+tests/test_gt_definitions/test_FormCategoryGQLModel.py::test_reference_formcategories 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:340 OAuthServer started at 8125
+INFO     root:conftest.py:377 have token eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiYWNjZXNzX3Rva2VuIjoiQUNDVC1uNENWZ2RveDVhcmRYek4wUW84U3B5MWFkRFJDeU5naCIsImV4cGlyZXNfaW4iOjM2MDAsInJlZnJlc2hfdG9rZW4iOiJSRUZULUlWNkowRkpmbERsUEZZRWYxUkdUaHZvUndsQjFidm9iIn0.KpMgrLVRPt3TEepDNyW5lBbk57V3jVn32sqV53e1RmtBXQRxdE6sj7mscXqknORZJgwOlmiq0ZJ5voS-Q7JXwgK1yxGJu2EGKsRskXeSHKa9HXFAk18e1Zho9MZZzcs5wGNbRl63ZJbQBb1ny7roTcljWtjpxhn1BT5IaqtZGssWcyA7Hx7hWUr_WelhOX8Uj8YGWFeGF6bYeu7Buq-33wERpoj-JskPy0hgngWFp71cuueVwhmCFk_-AscyFJNnwfutcqphChQAZiPG3YtllBGUn8aZ97DHwBfRkYko0-kXlDOBkX4Dry5WdR8uvXIp0f_4sqlhEalpxX458AVV-g
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+INFO     root:__init__.py:7 attaching voyager
+INFO     root:main.py:129 ####################################################
+INFO     root:main.py:130 #                                                  #
+INFO     root:main.py:131 # RUNNING IN DEMO                                  #
+INFO     root:main.py:132 #                                                  #
+INFO     root:main.py:133 ####################################################
+-------------------------------- live log call --------------------------------
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormCategoryGQLModel {id, name, lastchange}}} with {'rep': [{'__typename': 'FormCategoryGQLModel', 'id': '37675bd4-afb0-11ed-9bd8-0242ac110002'}]}
+INFO     root:main.py:39 engine started
+INFO     root:main.py:44 data (if any) imported
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '37675bd4-afb0-11ed-9bd8-0242ac110002', 'name': 'Studentské žádosti', 'lastchange': '2023-12-19T12:18:36'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '37675bd4-afb0-11ed-9bd8-0242ac110002', 'name': 'Studentské žádosti', 'lastchange': '2023-12-19T12:18:35'}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormCategoryGQLModel {id, name, lastchange}}} with {'rep': [{'__typename': 'FormCategoryGQLModel', 'id': '37675fe4-afb0-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '37675fe4-afb0-11ed-9bd8-0242ac110002', 'name': 'Ostatní', 'lastchange': '2023-12-19T12:18:36'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '37675fe4-afb0-11ed-9bd8-0242ac110002', 'name': 'Ostatní', 'lastchange': '2023-12-19T12:18:35'}]}
+PASSED                                                                   [  2%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormCategoryGQLModel.py::test_query_form_category_by_id 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [  4%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormCategoryGQLModel.py::test_query_form_category_page 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [  6%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormCategoryGQLModel.py::test_insert_form_category 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [  8%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormCategoryGQLModel.py::test_update_form_category 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 10%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormGQLModel.py::test_reference_forms 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormGQLModel {id, name, lastchange, valid, status, sections {id}, creator {id}, nameEn, createdby {id}}}} with {'rep': [{'__typename': 'FormGQLModel', 'id': '190d578c-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '190d578c-afb1-11ed-9bd8-0242ac110002', 'name': 'Žádost', 'lastchange': '2023-12-19T12:18:36', 'valid': True, 'status': None, 'sections': [{'id': '48bbc7d4-afb1-11ed-9bd8-0242ac110002'}, {'id': '48bbca18-afb1-11ed-9bd8-0242ac110002'}], 'creator': None, 'nameEn': '', 'createdby': None}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '190d578c-afb1-11ed-9bd8-0242ac110002', 'name': 'Žádost', 'lastchange': '2023-12-19T12:18:37', 'valid': True, 'status': None, 'sections': [{'id': '48bbc7d4-afb1-11ed-9bd8-0242ac110002'}, {'id': '48bbca18-afb1-11ed-9bd8-0242ac110002'}], 'creator': None, 'nameEn': '', 'createdby': None}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormGQLModel {id, name, lastchange, valid, status, sections {id}, creator {id}, nameEn, createdby {id}}}} with {'rep': [{'__typename': 'FormGQLModel', 'id': '190d5a7a-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '190d5a7a-afb1-11ed-9bd8-0242ac110002', 'name': 'Žádost', 'lastchange': '2023-12-19T12:18:36', 'valid': True, 'status': None, 'sections': [{'id': '48bbca9a-afb1-11ed-9bd8-0242ac110002'}, {'id': '48bbcaea-afb1-11ed-9bd8-0242ac110002'}], 'creator': None, 'nameEn': '', 'createdby': None}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '190d5a7a-afb1-11ed-9bd8-0242ac110002', 'name': 'Žádost', 'lastchange': '2023-12-19T12:18:37', 'valid': True, 'status': None, 'sections': [{'id': '48bbca9a-afb1-11ed-9bd8-0242ac110002'}, {'id': '48bbcaea-afb1-11ed-9bd8-0242ac110002'}], 'creator': None, 'nameEn': '', 'createdby': None}]}
+PASSED                                                                   [ 12%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormGQLModel.py::test_query_form_by_id 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [ 14%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormGQLModel.py::test_query_form_page 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [ 16%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormGQLModel.py::test_form_insert 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 18%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormGQLModel.py::test_form_update 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 20%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormGQLModel.py::test_hello_forms 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 22%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormTypeGQLModel.py::test_reference_formtypes 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormTypeGQLModel {id, name, lastchange}}} with {'rep': [{'__typename': 'FormTypeGQLModel', 'id': '2e1140f4-afb0-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '2e1140f4-afb0-11ed-9bd8-0242ac110002', 'name': 'Žádost', 'lastchange': '2023-12-19T12:18:36'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '2e1140f4-afb0-11ed-9bd8-0242ac110002', 'name': 'Žádost', 'lastchange': '2023-12-19T12:18:46'}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormTypeGQLModel {id, name, lastchange}}} with {'rep': [{'__typename': 'FormTypeGQLModel', 'id': '2e113e88-afb0-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '2e113e88-afb0-11ed-9bd8-0242ac110002', 'name': 'Zadání DP', 'lastchange': '2023-12-19T12:18:36'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '2e113e88-afb0-11ed-9bd8-0242ac110002', 'name': 'Zadání DP', 'lastchange': '2023-12-19T12:18:46'}]}
+PASSED                                                                   [ 24%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormTypeGQLModel.py::test_query_form_type_by_id 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [ 26%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormTypeGQLModel.py::test_query_form_type_page 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [ 28%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormTypeGQLModel.py::test_insert_form_type 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 30%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_FormTypeGQLModel.py::test_update_form_type 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 32%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_HistoryGQLModel.py::test_reference_histories 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on RequestHistoryGQLModel {id, name}}} with {'rep': [{'__typename': 'RequestHistoryGQLModel', 'id': '84c35266-afb5-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '84c35266-afb5-11ed-9bd8-0242ac110002', 'name': ''}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '84c35266-afb5-11ed-9bd8-0242ac110002', 'name': ''}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on RequestHistoryGQLModel {id, name}}} with {'rep': [{'__typename': 'RequestHistoryGQLModel', 'id': '84c35504-afb5-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '84c35504-afb5-11ed-9bd8-0242ac110002', 'name': ''}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '84c35504-afb5-11ed-9bd8-0242ac110002', 'name': ''}]}
+PASSED                                                                   [ 34%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_HistoryGQLModel.py::test_insert_history 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 36%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_HistoryGQLModel.py::test_update_history 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 38%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemCategoryGQLModel.py::test_reference_itemcategories 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormItemCategoryGQLModel {id, name}}} with {'rep': [{'__typename': 'FormItemCategoryGQLModel', 'id': 'b1cb0f80-afb8-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': 'b1cb0f80-afb8-11ed-9bd8-0242ac110002', 'name': 'GQL_API'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': 'b1cb0f80-afb8-11ed-9bd8-0242ac110002', 'name': 'GQL_API'}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormItemCategoryGQLModel {id, name}}} with {'rep': [{'__typename': 'FormItemCategoryGQLModel', 'id': 'b1cb1462-afb8-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': 'b1cb1462-afb8-11ed-9bd8-0242ac110002', 'name': 'Text'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': 'b1cb1462-afb8-11ed-9bd8-0242ac110002', 'name': 'Text'}]}
+PASSED                                                                   [ 40%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemCategoryGQLModel.py::test_query_item_category_by_id 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [ 42%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemCategoryGQLModel.py::test_query_item_category_page 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [ 44%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemCategoryGQLModel.py::test_insert_item_category 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 46%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemCategoryGQLModel.py::test_update_item_category 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 48%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemGQLModel.py::test_reference_items 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormItemGQLModel {id, name, lastchange}}} with {'rep': [{'__typename': 'FormItemGQLModel', 'id': '72a3d4b0-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '72a3d4b0-afb1-11ed-9bd8-0242ac110002', 'name': 'user_id', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '72a3d4b0-afb1-11ed-9bd8-0242ac110002', 'name': 'user_id', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormItemGQLModel {id, name, lastchange}}} with {'rep': [{'__typename': 'FormItemGQLModel', 'id': '72a3d7b2-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '72a3d7b2-afb1-11ed-9bd8-0242ac110002', 'name': 'Znìní', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '72a3d7b2-afb1-11ed-9bd8-0242ac110002', 'name': 'Znìní', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormItemGQLModel {id, name, lastchange}}} with {'rep': [{'__typename': 'FormItemGQLModel', 'id': '72a3d85c-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '72a3d85c-afb1-11ed-9bd8-0242ac110002', 'name': 'user_id', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '72a3d85c-afb1-11ed-9bd8-0242ac110002', 'name': 'user_id', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormItemGQLModel {id, name, lastchange}}} with {'rep': [{'__typename': 'FormItemGQLModel', 'id': '72a3d8de-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '72a3d8de-afb1-11ed-9bd8-0242ac110002', 'name': 'Znìní', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '72a3d8de-afb1-11ed-9bd8-0242ac110002', 'name': 'Znìní', 'lastchange': '2023-04-19T20:00:00'}]}
+PASSED                                                                   [ 50%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemGQLModel.py::test_query_item_by_id 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [ 52%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemGQLModel.py::test_query_item_page 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [ 54%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemGQLModel.py::test_item_insert 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 56%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemGQLModel.py::test_item_update 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 58%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemTypeGQLModel.py::test_reference_itemtypes 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormItemTypeGQLModel {id, items {id}}}} with {'rep': [{'__typename': 'FormItemTypeGQLModel', 'id': '9bdb916a-afb6-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '9bdb916a-afb6-11ed-9bd8-0242ac110002', 'items': [{'id': '72a3d4b0-afb1-11ed-9bd8-0242ac110002'}, {'id': '72a3d85c-afb1-11ed-9bd8-0242ac110002'}]}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '9bdb916a-afb6-11ed-9bd8-0242ac110002', 'items': [{'id': '72a3d4b0-afb1-11ed-9bd8-0242ac110002'}, {'id': '72a3d85c-afb1-11ed-9bd8-0242ac110002'}]}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormItemTypeGQLModel {id, items {id}}}} with {'rep': [{'__typename': 'FormItemTypeGQLModel', 'id': '9bdb93a4-afb6-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '9bdb93a4-afb6-11ed-9bd8-0242ac110002', 'items': []}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '9bdb93a4-afb6-11ed-9bd8-0242ac110002', 'items': []}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormItemTypeGQLModel {id, items {id}}}} with {'rep': [{'__typename': 'FormItemTypeGQLModel', 'id': '9bdb9426-afb6-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '9bdb9426-afb6-11ed-9bd8-0242ac110002', 'items': [{'id': '72a3d7b2-afb1-11ed-9bd8-0242ac110002'}, {'id': '72a3d8de-afb1-11ed-9bd8-0242ac110002'}]}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '9bdb9426-afb6-11ed-9bd8-0242ac110002', 'items': [{'id': '72a3d7b2-afb1-11ed-9bd8-0242ac110002'}, {'id': '72a3d8de-afb1-11ed-9bd8-0242ac110002'}]}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormItemTypeGQLModel {id, items {id}}}} with {'rep': [{'__typename': 'FormItemTypeGQLModel', 'id': '9bdb9476-afb6-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '9bdb9476-afb6-11ed-9bd8-0242ac110002', 'items': []}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '9bdb9476-afb6-11ed-9bd8-0242ac110002', 'items': []}]}
+PASSED                                                                   [ 60%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemTypeGQLModel.py::test_query_item_type_by_id 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [ 62%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemTypeGQLModel.py::test_query_item_type_page 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [ 64%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemTypeGQLModel.py::test_item_type_insert 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 66%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_ItemTypeGQLModel.py::test_item_type_update 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 68%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_PartGQLModel.py::test_reference_parts 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormPartGQLModel {id, name, lastchange, order, section {id}}}} with {'rep': [{'__typename': 'FormPartGQLModel', 'id': '52e3ee26-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3ee26-afb1-11ed-9bd8-0242ac110002', 'name': 'Identifikace', 'lastchange': '2023-04-19T20:00:00', 'order': 1, 'section': {'id': '48bbc7d4-afb1-11ed-9bd8-0242ac110002'}}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3ee26-afb1-11ed-9bd8-0242ac110002', 'name': 'Identifikace', 'lastchange': '2023-04-19T20:00:00', 'order': 1, 'section': {'id': '48bbc7d4-afb1-11ed-9bd8-0242ac110002'}}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormPartGQLModel {id, name, lastchange, order, section {id}}}} with {'rep': [{'__typename': 'FormPartGQLModel', 'id': '52e3f22c-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3f22c-afb1-11ed-9bd8-0242ac110002', 'name': 'Znìní', 'lastchange': '2023-04-19T20:00:00', 'order': 1, 'section': {'id': '48bbca18-afb1-11ed-9bd8-0242ac110002'}}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3f22c-afb1-11ed-9bd8-0242ac110002', 'name': 'Znìní', 'lastchange': '2023-04-19T20:00:00', 'order': 1, 'section': {'id': '48bbca18-afb1-11ed-9bd8-0242ac110002'}}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormPartGQLModel {id, name, lastchange, order, section {id}}}} with {'rep': [{'__typename': 'FormPartGQLModel', 'id': '52e3f2d6-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3f2d6-afb1-11ed-9bd8-0242ac110002', 'name': 'Identifikace', 'lastchange': '2023-04-19T20:00:00', 'order': 1, 'section': {'id': '48bbca9a-afb1-11ed-9bd8-0242ac110002'}}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3f2d6-afb1-11ed-9bd8-0242ac110002', 'name': 'Identifikace', 'lastchange': '2023-04-19T20:00:00', 'order': 1, 'section': {'id': '48bbca9a-afb1-11ed-9bd8-0242ac110002'}}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormPartGQLModel {id, name, lastchange, order, section {id}}}} with {'rep': [{'__typename': 'FormPartGQLModel', 'id': '52e3f344-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3f344-afb1-11ed-9bd8-0242ac110002', 'name': 'Znìní', 'lastchange': '2023-04-19T20:00:00', 'order': 1, 'section': {'id': '48bbcaea-afb1-11ed-9bd8-0242ac110002'}}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3f344-afb1-11ed-9bd8-0242ac110002', 'name': 'Znìní', 'lastchange': '2023-04-19T20:00:00', 'order': 1, 'section': {'id': '48bbcaea-afb1-11ed-9bd8-0242ac110002'}}]}
+PASSED                                                                   [ 70%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_PartGQLModel.py::test_resolve_part 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormPartGQLModel {id, lastchange, order}}} with {'rep': [{'__typename': 'FormPartGQLModel', 'id': '52e3ee26-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3ee26-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00', 'order': 1}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3ee26-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00', 'order': 1}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormPartGQLModel {id, lastchange, order}}} with {'rep': [{'__typename': 'FormPartGQLModel', 'id': '52e3f22c-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3f22c-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00', 'order': 1}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3f22c-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00', 'order': 1}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormPartGQLModel {id, lastchange, order}}} with {'rep': [{'__typename': 'FormPartGQLModel', 'id': '52e3f2d6-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3f2d6-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00', 'order': 1}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3f2d6-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00', 'order': 1}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormPartGQLModel {id, lastchange, order}}} with {'rep': [{'__typename': 'FormPartGQLModel', 'id': '52e3f344-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3f344-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00', 'order': 1}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '52e3f344-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00', 'order': 1}]}
+PASSED                                                                   [ 72%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_PartGQLModel.py::test_part_insert 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 74%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_PartGQLModel.py::test_part_update 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 76%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_RequestGQLModel.py::test_reference_requests 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on RequestGQLModel {id, name}}} with {'rep': [{'__typename': 'RequestGQLModel', 'id': '13181566-afb0-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '13181566-afb0-11ed-9bd8-0242ac110002', 'name': 'Žádost o pøerušení studia'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '13181566-afb0-11ed-9bd8-0242ac110002', 'name': 'Žádost o pøerušení studia'}]}
+PASSED                                                                   [ 78%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_RequestGQLModel.py::test_query_request_by_id 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [ 80%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_RequestGQLModel.py::test_query_request_page 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+PASSED                                                                   [ 82%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_RequestGQLModel.py::test_resolve_request 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on RequestGQLModel {id, lastchange}}} with {'rep': [{'__typename': 'RequestGQLModel', 'id': '13181566-afb0-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '13181566-afb0-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '13181566-afb0-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00'}]}
+PASSED                                                                   [ 84%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_RequestGQLModel.py::test_insert_request 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 86%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_RequestGQLModel.py::test_update_request 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 88%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_SectionGQLModel.py::test_reference_sections 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormSectionGQLModel {id, name, lastchange}}} with {'rep': [{'__typename': 'FormSectionGQLModel', 'id': '48bbc7d4-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbc7d4-afb1-11ed-9bd8-0242ac110002', 'name': 'Student', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbc7d4-afb1-11ed-9bd8-0242ac110002', 'name': 'Student', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormSectionGQLModel {id, name, lastchange}}} with {'rep': [{'__typename': 'FormSectionGQLModel', 'id': '48bbca18-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbca18-afb1-11ed-9bd8-0242ac110002', 'name': 'Znìní', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbca18-afb1-11ed-9bd8-0242ac110002', 'name': 'Znìní', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormSectionGQLModel {id, name, lastchange}}} with {'rep': [{'__typename': 'FormSectionGQLModel', 'id': '48bbca9a-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbca9a-afb1-11ed-9bd8-0242ac110002', 'name': 'Student', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbca9a-afb1-11ed-9bd8-0242ac110002', 'name': 'Student', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormSectionGQLModel {id, name, lastchange}}} with {'rep': [{'__typename': 'FormSectionGQLModel', 'id': '48bbcaea-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbcaea-afb1-11ed-9bd8-0242ac110002', 'name': 'Znìní', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbcaea-afb1-11ed-9bd8-0242ac110002', 'name': 'Znìní', 'lastchange': '2023-04-19T20:00:00'}]}
+PASSED                                                                   [ 90%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_SectionGQLModel.py::test_resolve_section 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+-------------------------------- live log call --------------------------------
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormSectionGQLModel {id, lastchange}}} with {'rep': [{'__typename': 'FormSectionGQLModel', 'id': '48bbc7d4-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbc7d4-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbc7d4-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormSectionGQLModel {id, lastchange}}} with {'rep': [{'__typename': 'FormSectionGQLModel', 'id': '48bbca18-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbca18-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbca18-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormSectionGQLModel {id, lastchange}}} with {'rep': [{'__typename': 'FormSectionGQLModel', 'id': '48bbca9a-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbca9a-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbca9a-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:130 query representations query($rep: [_Any!]!){_entities(representations: $rep){    ...on FormSectionGQLModel {id, lastchange}}} with {'rep': [{'__typename': 'FormSectionGQLModel', 'id': '48bbcaea-afb1-11ed-9bd8-0242ac110002'}]}
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/gql "HTTP/1.1 200 OK"
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbcaea-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00'}]}
+INFO     root:gt_utils.py:90 {'_entities': [{'id': '48bbcaea-afb1-11ed-9bd8-0242ac110002', 'lastchange': '2023-04-19T20:00:00'}]}
+PASSED                                                                   [ 92%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_SectionGQLModel.py::test_insert_section 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 94%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test_SectionGQLModel.py::test_update_section 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 96%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test__permisions.py::test_request_permitted 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [ 98%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+
+tests/test_gt_definitions/test__permisions.py::test_fail 
+------------------------------- live log setup --------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+PASSED                                                                   [100%]
+------------------------------ live log teardown ------------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+INFO     root:conftest.py:345 OAuthServer stopped at 8125
+
+tests/test_gt_definitions/test__permisions.py::test_fail ERROR           [100%]
+
+=================================== ERRORS ====================================
+_______________________ ERROR at teardown of test_fail ________________________
+
+    def finalizer() -> None:
+        """Yield again, to finalize."""
+    
+        async def async_finalizer() -> None:
+            try:
+                await gen_obj.__anext__()
+            except StopAsyncIteration:
+                pass
+            else:
+                msg = "Async generator fixture didn't stop."
+                msg += "Yield only once."
+                raise ValueError(msg)
+    
+>       event_loop.run_until_complete(async_finalizer())
+
+.venv\lib\site-packages\pytest_asyncio\plugin.py:336: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\admin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py:624: in run_until_complete
+    self._check_closed()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <ProactorEventLoop running=False closed=True debug=False>
+
+    def _check_closed(self):
+        if self._closed:
+>           raise RuntimeError('Event loop is closed')
+E           RuntimeError: Event loop is closed
+
+C:\Users\admin\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py:515: RuntimeError
+---------------------------- Captured stdout setup ----------------------------
+Server started at 8124
+Env GQLUG_ENDPOINT_URL set to http://localhost:8124/gql
+Server started at 8123
+setting env Demo to True
+Env GQLUG_ENDPOINT_URL set to http://localhost:8123/gql
+----------------------------- Captured log setup ------------------------------
+INFO     root:conftest.py:313 Server started at 8124
+INFO     root:conftest.py:313 Server started at 8123
+---------------------------- Captured stdout call -----------------------------
+OAuthServer
+('GQLUG_ENDPOINT_URL', 'http://localhost:8123/gql')
+-------------------------- Captured stdout teardown ---------------------------
+End of GQLUG_ENDPOINT_URL set to http://localhost:8123/gql
+end of setting env Demo to True
+Server stopped at 8123
+End of GQLUG_ENDPOINT_URL set to http://localhost:8124/gql
+Server stopped at 8124
+OAuthServer stopped at 8125
+---------------------------- Captured log teardown ----------------------------
+INFO     root:conftest.py:318 Server stopped at 8123
+INFO     root:conftest.py:318 Server stopped at 8124
+INFO     root:conftest.py:345 OAuthServer stopped at 8125
+
+---------- coverage: platform win32, python 3.10.10-final-0 ----------
+Name                                           Stmts   Miss  Cover   Missing
+----------------------------------------------------------------------------
+DBDefinitions\FormCategoryModel.py                17      0   100%
+DBDefinitions\FormModel.py                        22      0   100%
+DBDefinitions\FormTypeModel.py                    19      0   100%
+DBDefinitions\HistoryModel.py                     20      0   100%
+DBDefinitions\ItemCategoryModel.py                17      0   100%
+DBDefinitions\ItemModel.py                        22      0   100%
+DBDefinitions\ItemTypeModel.py                    21      0   100%
+DBDefinitions\PartModel.py                        20      0   100%
+DBDefinitions\RequestModel.py                     19      0   100%
+DBDefinitions\SectionModel.py                     21      0   100%
+DBDefinitions\__init__.py                         41     18    56%   28-38, 53-61
+DBDefinitions\base.py                              3      0   100%
+DBDefinitions\uuid.py                              7      0   100%
+GraphTypeDefinitions\BaseGQLModel.py              17      1    94%   8
+GraphTypeDefinitions\FormCategoryGQLModel.py      77      3    96%   49-51
+GraphTypeDefinitions\FormGQLModel.py             115      0   100%
+GraphTypeDefinitions\FormTypeGQLModel.py          94      3    97%   57-59
+GraphTypeDefinitions\HistoryGQLModel.py           74      0   100%
+GraphTypeDefinitions\ItemCategoryGQLModel.py      74      3    96%   49-51
+GraphTypeDefinitions\ItemGQLModel.py             115      0   100%
+GraphTypeDefinitions\ItemTypeGQLModel.py          81      0   100%
+GraphTypeDefinitions\PartGQLModel.py              85      0   100%
+GraphTypeDefinitions\RequestGQLModel.py           89      1    99%   61
+GraphTypeDefinitions\SectionGQLModel.py           97      0   100%
+GraphTypeDefinitions\_GraphPermissions.py         79     22    72%   11, 15, 42-45, 185-199, 202, 273, 328
+GraphTypeDefinitions\_GraphResolvers.py           63      0   100%
+GraphTypeDefinitions\__init__.py                  79      0   100%
+GraphTypeDefinitions\externals.py                 25      1    96%   6
+utils\DBFeeder.py                                 40      5    88%   34, 39-41, 66
+utils\Dataloaders.py                             152     18    88%   184, 199-201, 451-457, 462-464, 479-482
+utils\__init__.py                                  3      0   100%
+utils\gql_ug_proxy.py                             47     16    66%   17-24, 29-31, 39-42, 55
+utils\sentinel.py                                  8      0   100%
+----------------------------------------------------------------------------
+TOTAL                                           1663     91    95%
+
+=========================== short test summary info ===========================
+ERROR tests/test_gt_definitions/test__permisions.py::test_fail - RuntimeError...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+======================== 50 passed, 1 error in 28.50s =========================

@@ -1,0 +1,12 @@
+mutation UserUpdate($id: UUID!, $lastchange: DateTime!, $name: String) {
+  result: userUpdate(user: {id: $id, lastchange: $lastchange, name: $name}) {
+    id
+    msg
+    result: user {
+      __typename
+      id
+      lastchange
+      name
+    }
+  }
+}

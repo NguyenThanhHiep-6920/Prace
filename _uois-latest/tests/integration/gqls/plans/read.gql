@@ -1,0 +1,36 @@
+query($id: UUID!) {
+  result: planById(id: $id) {
+		...Plan    
+  }
+}
+
+fragment Plan on PlanGQLModel {
+  __typename
+    id
+    lastchange
+    name
+    lessons {
+      name
+      id
+      order
+      type {
+        id
+      }
+      length
+      users {
+        id
+      }
+      groups {
+        id
+      }
+      facilities {
+        id
+      }
+    }
+    semester {
+      id
+      plans {
+        id
+      }
+    }
+}

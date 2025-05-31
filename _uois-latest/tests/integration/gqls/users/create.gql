@@ -1,0 +1,12 @@
+mutation UserInsert($id: UUID, $name: String) {
+  result: userInsert(user: {id: $id, name: $name}) {
+    id
+    msg
+    result: user {
+      __typename
+      id
+      lastchange
+      name
+    }
+  }
+}

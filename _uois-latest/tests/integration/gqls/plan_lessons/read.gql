@@ -1,0 +1,24 @@
+query ById($id: UUID!) {
+  result: plannedLessonById(id: $id) {
+    ...Lesson
+  }
+}
+
+fragment Lesson on PlannedLessonGQLModel {
+  __typename
+    id
+    name
+  lastchange
+  rbacObject { id }
+  type { id }
+  order
+  length
+  linkedTo { __typename id name }
+  linkedWith { __typename id name }
+  users { id }
+  groups { id }
+  facilities { id }
+  event { id }
+  semester { id }
+  plan { __typename id name }
+}

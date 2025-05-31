@@ -1,0 +1,29 @@
+mutation Insert($id: UUID, $plan_id: UUID!, $name: String!, $semester_id: UUID ) {
+  result: plannedLessonInsert(lesson: {id: $id, planId: $plan_id, name: $name, semesterId: $semester_id }) {
+    id
+    msg
+    result: lesson {
+      ...Lesson
+    }
+  }
+}
+
+
+fragment Lesson on PlannedLessonGQLModel {
+  __typename
+    id
+    name
+  lastchange
+  rbacObject { id }
+  type { id }
+  order
+  length
+  linkedTo { __typename id name }
+  linkedWith { __typename id name }
+  users { id }
+  groups { id }
+  facilities { id }
+  event { id }
+  semester { id }
+  plan { __typename id name }
+}

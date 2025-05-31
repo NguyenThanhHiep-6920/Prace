@@ -1,0 +1,11 @@
+mutation MembershipInsert($id: UUID!, $lastchange: DateTime!, $valid: Boolean, $startdate: DateTime, $enddate: DateTime) {
+  result: membershipUpdate(membership: {id: $id, lastchange: $lastchange, valid: $valid, startdate: $startdate, enddate: $enddate }) {
+    id
+    msg
+    result: membership {
+      __typename
+      id
+      lastchange
+    }
+  }
+}

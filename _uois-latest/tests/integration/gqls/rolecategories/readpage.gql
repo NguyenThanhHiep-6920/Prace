@@ -1,0 +1,18 @@
+query RoleCategoryPage($skip: Int, $limit: Int, $where: RoleCategoryInputWhereFilter) {
+  result: roleCategoryPage(skip: $skip, limit: $limit, where: $where) {
+    ...RoleCategory
+  }
+}
+
+
+fragment RoleCategory on RoleCategoryGQLModel {
+	__typename
+  id
+  lastchange
+  name
+  nameEn
+  
+  created
+  createdby { id email }
+  changedby { id email }
+}

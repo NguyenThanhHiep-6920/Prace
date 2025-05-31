@@ -1,0 +1,21 @@
+mutation GroupTypeInsert($id: UUID, $name: String!, ) {
+  result: groupTypeInsert(groupType: {id: $id, name: $name, }) {
+    id
+    msg
+    result: groupType {
+    	...GroupType
+    }
+  }
+}
+
+fragment GroupType on GroupTypeGQLModel {
+	__typename
+  id
+  lastchange
+  name
+  nameEn
+  
+  created
+  createdby { id email }
+  changedby { id email }
+}

@@ -1,0 +1,29 @@
+mutation Update($id: UUID!, $name: String, $lastchange: DateTime!, $order: Int, $length: Int, $topic_id: UUID, $lessontype_id: UUID, $semester_id: UUID, $linkedlesson_id: UUID ) {
+  result: plannedLessonUpdate(lesson: {id: $id, lastchange: $lastchange, name: $name, order: $order, length: $length, topicId: $topic_id, lessontypeId: $lessontype_id, semesterId: $semester_id, linkedlessonId: $linkedlesson_id}) {
+    id
+    msg
+    result: lesson {
+      ...Lesson
+    }
+  }
+}
+
+
+fragment Lesson on PlannedLessonGQLModel {
+  __typename
+    id
+    name
+  lastchange
+  rbacObject { id }
+  type { id }
+  order
+  length
+  linkedTo { __typename id name }
+  linkedWith { __typename id name }
+  users { id }
+  groups { id }
+  facilities { id }
+  event { id }
+  semester { id }
+  plan { __typename id name }
+}

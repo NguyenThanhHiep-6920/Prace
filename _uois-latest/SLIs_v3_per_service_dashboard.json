@@ -1,0 +1,157 @@
+{
+  "id": null,
+  "title": "SLI & SLO Validation Dashboard (Per Service)",
+  "timezone": "browser",
+  "schemaVersion": 30,
+  "version": 1,
+  "refresh": "10s",
+  "panels": [
+    {
+      "title": "Service Availability (%)",
+      "type": "gauge",
+      "targets": [
+        {
+          "expr": "1 - (rate(graphql_errors_total{service=~\"$service\"}[5m]) / rate(graphql_query_total{service=~\"$service\"}[5m]))",
+          "refId": "A"
+        }
+      ],
+      "id": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "datasource": "prometheus"
+    },
+    {
+      "title": "Error Rate (%)",
+      "type": "gauge",
+      "targets": [
+        {
+          "expr": "rate(graphql_errors_total{service=~\"$service\"}[5m]) / rate(graphql_query_total{service=~\"$service\"}[5m])",
+          "refId": "A"
+        }
+      ],
+      "id": 2,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "datasource": "prometheus"
+    },
+    {
+      "title": "Avg Response Time (s)",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "avg(rate(graphql_query_duration_seconds_sum{service=~\"$service\"}[5m])) / avg(rate(graphql_query_duration_seconds_count{service=~\"$service\"}[5m]))",
+          "refId": "A"
+        }
+      ],
+      "id": 3,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "datasource": "prometheus"
+    },
+    {
+      "title": "P95 Latency (s)",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, rate(graphql_query_duration_seconds_bucket{service=~\"$service\"}[5m]))",
+          "refId": "A"
+        }
+      ],
+      "id": 4,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "datasource": "prometheus"
+    },
+    {
+      "title": "P99 Latency (s)",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, rate(graphql_query_duration_seconds_bucket{service=~\"$service\"}[5m]))",
+          "refId": "A"
+        }
+      ],
+      "id": 5,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "datasource": "prometheus"
+    },
+    {
+      "title": "Request Rate (req/s)",
+      "type": "graph",
+      "targets": [
+        {
+          "expr": "rate(graphql_query_total{service=~\"$service\"}[1m])",
+          "refId": "A"
+        }
+      ],
+      "id": 6,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "datasource": "prometheus"
+    }
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "service",
+        "type": "query",
+        "datasource": "prometheus",
+        "refresh": 1,
+        "query": "label_values(graphql_query_total, service)",
+        "includeAll": false,
+        "multi": false,
+        "sort": 1
+      }
+    ]
+  },
+  "annotations": {
+    "list": [
+      {
+        "name": "Alerts",
+        "type": "tags",
+        "enable": true,
+        "datasource": "-- Grafana --",
+        "iconColor": "rgba(255, 96, 96, 1)"
+      },
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "editable": true
+}

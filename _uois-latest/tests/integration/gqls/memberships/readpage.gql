@@ -1,0 +1,7 @@
+query MembershipPage($skip: Int, $limit: Int, $where: MembershipInputWhereFilter) {
+  result: membershipPage(skip: $skip, limit: $limit, where: $where) {
+    __typename
+    id
+    lastchange
+  }
+}

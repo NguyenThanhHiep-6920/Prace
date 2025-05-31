@@ -1,0 +1,53 @@
+version: '3.6'
+volumes:
+  prometheus_data:
+  #  grafana-data:
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus_server
+    #restart: always
+    volumes:
+      #- prometheus_data:/prometheus
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./rules:/etc/prometheus/rules:ro
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.retention.time=1y'
+      - '--web.enable-remote-write-receiver'
+      # - '--enable-feature=remote-write-receiver'
+      #- '--storage.tsdb.path="C:\prometheus\data"''
+
+    ports:
+      - 9090:9090
+  loki:
+    image: grafana/loki
+    command: -config.file=/etc/loki/local-config.yaml
+    ports:
+      - "3100:3100"
+
+  alertmanager:
+    image: prom/alertmanager
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/config.yml:ro
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+    ports:
+      - "9093:9093"
+  grafana:
+    image: grafana/grafana
+    user: '472'
+    restart: always
+    #environment:
+      #GF_INSTALL_PLUGINS: 'grafana-clock-panel,grafana-simple-json-datasource'
+    # volumes:
+    #   - grafana_data:/var/lib/grafana
+    #   - ./grafana/provisioning/:/etc/grafana/provisioning/
+    # env_file:
+    #   - ./grafana/config.monitoring
+    ports:
+      - 3000:3000
+      #- 8300:3000
+    depends_on:
+      - prometheus
+      - loki

@@ -1,0 +1,25 @@
+mutation($id: UUID!, $lastchange: DateTime!, 
+    $name: String, $startdate: DateTime, $enddate: DateTime,
+    $type_id: UUID
+  ) {
+    result: eventUpdate(event: {
+      id: $id, lastchange: $lastchange, 
+      name: $name, startdate: $startdate, enddate: $enddate,
+      typeId: $type_id
+    })
+    {
+      id
+      msg
+      result: event {
+        id
+        lastchange
+        name
+        startdate
+        enddate
+        eventType {
+          id
+          name
+        }
+      }
+    }
+  }

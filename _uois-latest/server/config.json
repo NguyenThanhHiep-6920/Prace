@@ -1,0 +1,117 @@
+{
+    "ug": { 
+        "file": "ug.html",
+        "title": "Uživatelé",
+        "authors": "Hrbolek",
+        "markdownfile": "ug.md"
+    },
+    "auto": { 
+        "file": "auto.html",
+        "title": "Automat",
+        "authors": "Hrbolek's automata",
+        "markdownfile": "auto.md"
+    },
+    "all": { 
+        "file": "all.html",
+        "title": "Nej",
+        "authors": "Hrbolek + students",
+        "markdownfile": "all.md"
+    },
+    "events": { 
+        "file": "events.html",
+        "title": "Rozvrh",
+        "authors": "Bublos",
+        "markdownfile": "events.md"
+    },
+    "facilities": { 
+        "file": "facilities.html",
+        "title": "Učebny",
+        "authors": "jokachu",
+        "markdownfile": "facilities.md"
+    },
+    "granting": { 
+        "file": "granting.html",
+        "title": "Akreditace / garance",
+        "authors": "white_002",
+        "markdownfile": "granting.md"
+    },    
+    "lessons": { 
+        "file": "lessons.html",
+        "title": "Plány studia",
+        "authors": "kristl63",
+        "markdownfile": "lessons.md"
+    },    
+    "surveys": { 
+        "file": "surveys.html",
+        "title": "Studentské hodnocení",
+        "authors": "DT",
+        "markdownfile": "surveys.md"
+    },    
+    "projects": { 
+        "file": "projects.html",
+        "title": "Projekty",
+        "authors": "LZ",
+        "markdownfile": "projects.md"
+    },    
+    "publications": { 
+        "file": "publications.html",
+        "title": "Výsledky",
+        "authors": "K4rleak",
+        "markdownfile": "publications.md"
+    },
+    "forms": { 
+        "file": "forms.html",
+        "title": "Žádosti",
+        "authors": "nikdo3",
+        "markdownfile": "forms.md"
+    },
+    "graphiql": { 
+        "file": "graphiql.html",
+        "title": "Graphiql",
+        "markdownfile": "graphiql.md",
+        "authors": "Greg Hurrell & many others"
+    },
+    "voyager": { 
+        "file": "voyager.html",
+        "title": "Voyager",
+        "authors": "Ivan Goncharov & many others",
+        "markdownfile": "voyager.md"
+    },
+    "importer": { 
+        "file": "importer.html",
+        "title": "Importer",
+        "authors": "Hrbolek",
+        "markdownfile": "importer.md"
+    },
+    "performance": { 
+        "file": "performance.html",
+        "title": "Performance test",
+        "authors": "Hrbolek",
+        "markdownfile": "performance.md"
+    },
+    "users": { 
+        "file": "users.html",
+        "title": "Uživatelé",
+        "authors": "Hrbolek",
+        "markdownfile": "users.md"
+    },    
+    "exams": { 
+        "file": "",
+        "title": "Zkoušky",
+        "authors": "many",
+        "markdownfile": "zkousky.md"
+    },   
+    "form": { 
+        "file": "form.html",
+        "title": "DEMO",
+        "authors": ":)",
+        "markdownfile": "form.md"
+    },
+    "debug": { 
+        "file": "debug.html",
+        "title": "Debug",
+        "authors": "Hrbolek",
+        "markdownfile": "debug.md"
+    }
+
+}

@@ -1,0 +1,251 @@
+x-system-data-volume: &system-data-volume
+  # pocatecni data pro gql kontejnery
+  type: bind
+  source: ./systemdata.rnd.json
+  target: /app/systemdata.json
+
+x-gql-database: &gql-database
+  # nastaveni jmen a hesel pro gql kontejnery a pro danou databazi
+  # environment:
+    # - POSTGRES_HOST=postgres_gql:5432
+    # - POSTGRES_USER=postgres
+    # - POSTGRES_PASSWORD=example
+    # - POSTGRES_DB=data
+  POSTGRES_HOST: postgres_gql:5432
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: example
+  POSTGRES_DB: data
+
+x-gql-setup: &gql-setup
+  # sdilene parametry pro gql kontejnery
+  # <<: *gql-database
+  environment:
+    <<: *gql-database
+    JWTPUBLICKEYURL: http://frontend:8000/oauth/publickey
+    JWTRESOLVEUSERPATHURL: http://frontend:8000/oauth/userinfo
+    GQLUG_ENDPOINT_URL: http://gql_ug:8000/gql
+    DEMO: False
+    DEMODATA: True
+  healthcheck:
+    # definice, umoznujici provest test, zda je kontejner v poradku
+    test: "curl -f -H 'Content-Type: application/json' -X POST -d '{\"query\":\"query{__schema{types{name}}}\"}' http://localhost:8000/gql || exit 1"
+    interval: 60s
+    retries: 3
+    start_period: 60s
+    timeout: 10s
+  # deploy:
+  #   replicas: 3
+  restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
+  volumes:
+    - <<: *system-data-volume
+  depends_on:
+    - postgres_gql
+  networks:
+    - middle-tier
+    - back-tier
+    
+networks:
+  # logicke site jednotlivych casti
+  front-tier: 
+  credentials:
+  middle-tier:
+  back-tier:
+
+services:
+  frontend:
+    image: hrbolek/frontend
+    environment:
+      - DEMO=False
+      - DEMODATA=False
+      # link na db mimo stack
+      # - POSTGRES_HOST=host.docker.internal:5432
+      - POSTGRES_HOST=postgres_credentials:5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=data
+      - GQL_PROXY=http://apollo:3000/api/gql/
+      - SALT=fe1c71b2-74c0-41e5-978f-eecbffac7418
+      - ADMIN_DEFAULT_EMAIL=john.newbie@world.com
+      - ADMIN_DEFAULT_PASSWORD=john.newbie@world.com
+    healthcheck:
+      # definice, umoznujici provest test, zda je kontejner v poradku (vsimnete si portu)
+      test: "curl -f -X GET http://localhost:8000/ || exit 1"
+      interval: 60s
+      retries: 3
+      start_period: 60s
+      timeout: 10s
+    restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
+    ports:
+      - 34001:8000
+    volumes:
+      - <<: *system-data-volume
+    depends_on:
+      - postgres_credentials
+    networks:
+      - front-tier
+      - credentials
+
+
+  apollo:
+    image: hrbolek/apollo_federation
+    # image: apollofederation:latest
+    environment:
+      # promenne, ktere lze cist v kontejneru
+      # SERVICES je json array popisujici jednotlive dostupne sluzby
+      - PORT=3000
+      - |
+        SERVICES=
+        [
+          {"name": "ug", "url": "http://gql_ug:8000/gql"},
+          {"name": "forms", "url": "http://gql_forms:8000/gql"},
+          {"name": "granting", "url": "http://gql_granting:8000/gql"},
+          {"name": "facilities", "url": "http://gql_facilities:8000/gql"},
+          {"name": "events", "url": "http://gql_events:8000/gql"},
+          {"name": "publications", "url": "http://gql_publications:8000/gql"},
+          {"name": "projects", "url": "http://gql_projects:8000/gql"},
+          {"name": "lessons", "url": "http://gql_lessons:8000/gql"},
+          {"name": "surveys", "url": "http://gql_surveys:8000/gql"},
+          {"name": "externalids", "url": "http://gql_externalids:8000/gql"}
+          
+        ]       
+    healthcheck:
+      # definice, umoznujici provest test, zda je kontejner v poradku (vsimnete si portu a srovnejte s portem v environment)
+      interval: 60s
+      retries: 3
+      start_period: 60s
+      timeout: 10s
+    restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
+    # ports: #v deploymentu by nebylo zadne mapovani portu
+      # vnejsi port : port, kde sluzbu poskytuje kontejner
+      # - 33000:3000
+    deploy:
+      replicas: 3
+    depends_on:
+      - gql_ug
+      - gql_forms
+      - gql_events
+      - gql_granting
+      - gql_facilities
+      - gql_projects
+      - gql_publications
+      - gql_surveys
+      - gql_externalids
+    networks:
+      - front-tier
+      - middle-tier
+
+
+  postgres_gql:
+    image: postgres
+    environment:
+      <<: *gql-database
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 60s
+      timeout: 10s
+      retries: 5
+    restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
+    networks:
+      - back-tier
+
+  postgres_credentials:
+    image: postgres
+    environment:
+      # promenne, ktere lze cist v kontejneru
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 60s
+      timeout: 10s
+      retries: 5
+    restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
+    networks:
+      - credentials      
+
+
+  gql_ug:
+    image: hrbolek/gql_ug #   image: kavic/ug
+    <<: *gql-setup
+
+  gql_externalids:
+    image: hrbolek/gql_externalids # where u user.events
+    <<: *gql-setup
+
+  gql_events:
+    # image: nafreju2/gql_events # where u user.events
+    image: hrbolek/gql_events # where u user.events
+    <<: *gql-setup
+
+  gql_facilities:
+    image: hrbolek/gql_facilities 
+    <<: *gql-setup
+
+  gql_granting:
+    image: hrbolek/gql_granting # where u user.events
+    <<: *gql-setup
+
+  gql_forms:
+    image: hrbolek/gql_forms
+    <<: *gql-setup
+
+  gql_projects:
+    image: hrbolek/gql_projects # frajxd/gql_projects # hrbolek/gql_projects
+    <<: *gql-setup
+
+  gql_publications:
+    image: hrbolek/gql_publications # kozmycz/gql_publications_a
+    <<: *gql-setup
+
+  gql_lessons:
+    image: hrbolek/gql_lessons # onickdock/gql_lessons_dev
+    <<: *gql-setup
+
+  gql_surveys:
+    image: hrbolek/gql_surveys
+    <<: *gql-setup
+
+  analytics:
+    image: hrbolek/analytics
+    environment:
+      - GQL_PROXY=http://apollo:3000/api/gql/
+    restart: on-failure:3 # nedojde k restartu pokud je kontejner "unhealthy", maximalne 3 pokusy
+    # networks:
+    #   - front-tier
+    #   - middle-tier
+
+  # prometheus:
+  #   image: prom/prometheus
+  #   restart: always
+  #   volumes:
+  #     - ./prometheus:/etc/prometheus/
+  #     # - prometheus_data:/prometheus
+  #   command:
+  #     - '--config.file=/etc/prometheus/prometheus.yml'
+  #     - '--storage.tsdb.path=/prometheus'
+  #     - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+  #     - '--web.console.templates=/usr/share/prometheus/consoles'
+  #   ports:
+  #     - 9090:9090
+  #   # links:
+  #   #   - cadvisor:cadvisor
+  #   #   - alertmanager:alertmanager
+  #   # depends_on:
+  #   #   - cadvisor
+
+  # grafana:
+  #   image: grafana/grafana
+  #   user: '472'
+  #   restart: always
+  #   environment:
+  #     GF_INSTALL_PLUGINS: 'grafana-clock-panel,grafana-simple-json-datasource'
+  #   # volumes:
+  #   #   - grafana_data:/var/lib/grafana
+  #   #   - ./grafana/provisioning/:/etc/grafana/provisioning/
+  #   # env_file:
+  #   #   - ./grafana/config.monitoring
+  #   ports:
+  #     - 8300:3000
+  #   depends_on:
+  #     - prometheus

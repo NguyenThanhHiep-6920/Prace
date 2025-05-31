@@ -1,0 +1,149 @@
+{
+  "id": null,
+  "title": "Cloud Service QoS & Availability",
+  "panels": [
+    {
+      "type": "gauge",
+      "title": "Service Availability (%)",
+      "targets": [
+        {
+          "expr": "service_availability_percent",
+          "legendFormat": "Availability",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 95
+              },
+              {
+                "color": "green",
+                "value": 99
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 4
+      },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Average Response Time (s)",
+      "targets": [
+        {
+          "expr": "service_average_response_time_seconds",
+          "legendFormat": "Avg Resp Time",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        }
+      },
+      "gridPos": {
+        "x": 6,
+        "y": 0,
+        "w": 6,
+        "h": 4
+      },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Latency Percentiles (P95 & P99)",
+      "targets": [
+        {
+          "expr": "service_p95_response_time_seconds",
+          "legendFormat": "P95",
+          "refId": "C"
+        },
+        {
+          "expr": "service_p99_response_time_seconds",
+          "legendFormat": "P99",
+          "refId": "D"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        }
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 4,
+        "w": 6,
+        "h": 4
+      },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Error Rate",
+      "targets": [
+        {
+          "expr": "service_error_rate",
+          "legendFormat": "Error Rate",
+          "refId": "E"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        }
+      },
+      "gridPos": {
+        "x": 6,
+        "y": 4,
+        "w": 6,
+        "h": 4
+      },
+      "datasource": "prometheus"
+    },
+    {
+      "type": "timeseries",
+      "title": "Request Rate (req/s)",
+      "targets": [
+        {
+          "expr": "service_request_rate",
+          "legendFormat": "Request Rate",
+          "refId": "F"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps"
+        }
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 6,
+        "h": 4
+      },
+      "datasource": "prometheus"
+    }
+  ],
+  "schemaVersion": 37,
+  "version": 1,
+  "refresh": "10s"
+}

@@ -1,0 +1,11 @@
+query ResolveReference($id: UUID!) {
+  _entities(representations: [{__typename: "MembershipGQLModel", id: $id}]) {
+    ...Membership
+  }
+}
+
+fragment Membership on MembershipGQLModel {
+  __typename
+  id
+  lastchange
+}

@@ -1,0 +1,64 @@
+mutation(
+  $user_id: UUID!, $group_id: UUID!, $facility_id: UUID!, $planlesson_id: UUID!,
+  $user_id2: UUID!, $group_id2: UUID!, $facility_id2: UUID!, $planlesson_id2: UUID!
+) {
+  result: plannedLessonUserInsert(userlesson: {userId: $user_id, planlessonId: $planlesson_id}) {
+    id
+    msg
+    result: lesson {
+      id
+      lastchange
+      users { id }
+    }
+  }
+  
+  resultB: plannedLessonGroupInsert(grouplesson: {groupId: $group_id, planlessonId: $planlesson_id}) {
+    id
+    msg
+    result: lesson {
+      id
+      lastchange
+      groups { id }
+    }
+  }
+  
+  resultC: plannedLessonFacilityInsert(facilitylesson: {facilityId: $facility_id, planlessonId: $planlesson_id}) {
+    id
+    msg
+    result: lesson {
+      id
+      lastchange
+      facilities { id }
+    }
+  }
+  
+	resultX: plannedLessonUserDelete(userlesson: {userId: $user_id2, planlessonId: $planlesson_id2}) {
+    id
+    msg
+    result: lesson {
+      id
+      lastchange
+      users { id }
+    }    
+  }
+  
+  resultY: plannedLessonGroupDelete(grouplesson: {groupId: $group_id2, planlessonId: $planlesson_id2}) {
+    id
+    msg
+    result: lesson {
+      id
+      lastchange
+      groups { id }
+    }
+  }
+  
+  resultZ: plannedLessonFacilityDelete(facilitylesson: {facilityId: $facility_id2, planlessonId: $planlesson_id2}) {
+    id
+    msg
+    result: lesson {
+      id
+      lastchange
+      facilities { id }
+    }
+  } 
+}
